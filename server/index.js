@@ -9,8 +9,9 @@ const courseRoutes = require("./routes/Course");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
 
-// frontend and backend jodne ke liye
-const cors = require("cors");
+// frontend and backend jodne ke liye cors use krege
+var cors = require("cors");
+
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
@@ -30,7 +31,11 @@ const corsOptions = {
     "https://synth-learn-full-project.vercel.app",
     "http://localhost:3000",
   ],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+  Credentials: true,
+
   allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 200,
   // other options...
 };
 
