@@ -40,11 +40,12 @@ exports.updateProfile = async (req, res) => {
     profileDetails.contactNumber = contactNumber;
     await profileDetails.save();
 
+    const updatedUserDetails = userDetails;
     // return response
     return res.status(200).json({
       success: true,
       message: "Profile Update Successfully",
-      // userDetails
+      updatedUserDetails
     });
   } catch (error) {
     console.log("***error is *** ", error);

@@ -122,12 +122,13 @@ exports.signUP = async (req, res) => {
     }
 
     // find most recent OTP stored for the user
-    const recentOTP = await OTP.find({ email: new RegExp("^" + email + "$", "i") })
-    .sort({ createdAt: -1 })
-    .limit(1);
-  
-  console.log("Recent OTP from database: ", recentOTP);
-  
+    const recentOTP = await OTP.find({
+      email: new RegExp("^" + email + "$", "i"),
+    })
+      .sort({ createdAt: -1 })
+      .limit(1);
+
+    console.log("Recent OTP from database: ", recentOTP);
 
     // otp --> user ne jo otp write kiya hai
     // recentOTP --> server ne jo otp database me store kiya hai
@@ -253,20 +254,22 @@ exports.login = async (req, res) => {
   }
 };
 
-// logout 
+// logout
 
-exports.logout = async(req,res)=>{
-  
-}
+exports.logout = async (req, res) => {};
 
 //ChangePassword
 exports.changePassword = async (req, res) => {
   try {
     // Get data from req body
-    const { oldPassword, newPassword, confirmPassword } = req.body;
+    const {
+      oldPassword,
+      newPassword,
+      confirmPassword = newPassword,
+    } = req.body;
 
     // Validation
-    if (!oldPassword || !newPassword || !confirmPassword) {
+    if (!oldPassword || !newPassword) {
       return res.status(403).json({
         success: false,
         message: "All fields are required",
@@ -294,12 +297,14 @@ exports.changePassword = async (req, res) => {
     // Update password in DB
     // user.password = await bcrypt.hash(newPassword, 10);
     user.password = newPassword;
-    await user.save().then(() => {
-      console.log("Password updated successfully in DB");
-    }).catch(err => {
-      console.log("Error saving updated password:", err);
-    });
-    
+    await user
+      .save()
+      .then(() => {
+        console.log("Password updated successfully in DB");
+      })
+      .catch((err) => {
+        console.log("Error saving updated password:", err);
+      });
 
     console.log("after update pass user : ", user);
     // Send mail

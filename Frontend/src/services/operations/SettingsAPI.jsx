@@ -4,6 +4,7 @@ import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
+import { useNavigate } from "react-router-dom"
 
 const {
   UPDATE_DISPLAY_PICTURE_API,
@@ -44,13 +45,15 @@ export function updateDisplayPicture(token, formData) {
 }
 
 export function updateProfile(token, formData) {
+  
   return async (dispatch) => {
+
     const toastId = toast.loading("Loading...")
     try {
       const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("UPDATE_PROFILE_API API RESPONSE............", response)
+      // console.log("UPDATE_PROFILE_API API RESPONSE............", response)
 
       if (!response.data.success) {
         throw new Error(response.data.message)
@@ -62,8 +65,9 @@ export function updateProfile(token, formData) {
         setUser({ ...response.data.updatedUserDetails, image: userImage })
       )
       toast.success("Profile Updated Successfully")
+     
     } catch (error) {
-      console.log("UPDATE_PROFILE_API API ERROR............", error)
+      console.log("UPDATE_PROFILE_API  ERROR............", error)
       toast.error("Could Not Update Profile")
     }
     toast.dismiss(toastId)
@@ -76,7 +80,7 @@ export async function changePassword(token, formData) {
     const response = await apiConnector("POST", CHANGE_PASSWORD_API, formData, {
       Authorization: `Bearer ${token}`,
     })
-    console.log("CHANGE_PASSWORD_API API RESPONSE............", response)
+    // console.log("CHANGE_PASSWORD_API API RESPONSE............", response)
 
     if (!response.data.success) {
       throw new Error(response.data.message)

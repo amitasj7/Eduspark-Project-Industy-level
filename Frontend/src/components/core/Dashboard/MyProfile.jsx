@@ -1,14 +1,50 @@
-import { RiEditBoxLine } from "react-icons/ri"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { RiEditBoxLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { formattedDate } from "../../../utils/dateFormatter";
+import IconBtn from "../../common/IconBtn";
+import { useEffect } from "react";
+import { apiConnector } from "../../../services/apiconnector";
+import { setUser } from "../../../slices/profileSlice";
+import { profileEndpoints } from "../../../services/apis";
+import toast from "react-hot-toast";
 
-import { formattedDate } from "../../../utils/dateFormatter"
-import IconBtn from "../../common/IconBtn"
+const {
+  GET_USER_DETAILS_API,
+  GET_USER_ENROLLED_COURSES_API,
+  GET_INSTRUCTOR_DATA_API,
+} = profileEndpoints;
 
 export default function MyProfile() {
-  const { user } = useSelector((state) => state.profile)
-  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  // // Function to fetch user data from API
+  // const fetchUserData = async () => {
+  //   // const toastId = toast.loading("Loading...");
+  //   try {
+  //     const response = await apiConnector("GET", GET_USER_DETAILS_API);
+  //     if (response.data.success) {
+  //       // Update local storage
+  //       localStorage.setItem("user", JSON.stringify(response.data.userDetails));
+  //       // Dispatch the user data to Redux store
+  //       dispatch(setUser(response.data.userDetails));
+  //     } else {
+  //       console.error("Failed to fetch user data:", response.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   // Fetch user data when the component mounts
+  //   fetchUserData();
+  // }, []); // Empty dependency array to run once
+
+  const handleEditClick = () => {
+    navigate("/dashboard/settings");
+  };
   return (
     <>
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
@@ -28,12 +64,7 @@ export default function MyProfile() {
             <p className="text-sm text-richblack-300">{user?.email}</p>
           </div>
         </div>
-        <IconBtn
-          text="Edit"
-          onclick={() => {
-            navigate("/dashboard/settings")
-          }}
-        >
+        <IconBtn text="Edit" onclick={handleEditClick}>
           <RiEditBoxLine />
         </IconBtn>
       </div>
@@ -43,7 +74,7 @@ export default function MyProfile() {
           <IconBtn
             text="Edit"
             onclick={() => {
-              navigate("/dashboard/settings")
+              navigate("/dashboard/settings");
             }}
           >
             <RiEditBoxLine />
@@ -56,6 +87,7 @@ export default function MyProfile() {
               : "text-richblack-400"
           } text-sm font-medium`}
         >
+          {/* {console.log("user additional details : ", user?.additionalDetails)} */}
           {user?.additionalDetails?.about ?? "Write Something About Yourself"}
         </p>
       </div>
@@ -67,7 +99,7 @@ export default function MyProfile() {
           <IconBtn
             text="Edit"
             onclick={() => {
-              navigate("/dashboard/settings")
+              navigate("/dashboard/settings");
             }}
           >
             <RiEditBoxLine />
@@ -118,5 +150,5 @@ export default function MyProfile() {
         </div>
       </div>
     </>
-  )
+  );
 }
