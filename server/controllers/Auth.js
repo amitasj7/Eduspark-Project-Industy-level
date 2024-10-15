@@ -122,10 +122,12 @@ exports.signUP = async (req, res) => {
     }
 
     // find most recent OTP stored for the user
-    const recentOTP = await OTP.find({ email })
-      .sort({ createdAt: -1 })
-      .limit(1);
-    console.log("Recent OTP is : ", recentOTP);
+    const recentOTP = await OTP.find({ email: new RegExp("^" + email + "$", "i") })
+    .sort({ createdAt: -1 })
+    .limit(1);
+  
+  console.log("Recent OTP from database: ", recentOTP);
+  
 
     // otp --> user ne jo otp write kiya hai
     // recentOTP --> server ne jo otp database me store kiya hai
@@ -134,13 +136,13 @@ exports.signUP = async (req, res) => {
     if (recentOTP.length == 0) {
       return res.status(400).json({
         success: false,
-        message: "OTP not found", // sahi message
+        message: "OTP not found in Database", // sahi message
       });
     } else if (otp !== recentOTP[0].otp) {
       // recentOTP ko index se access karein
       return res.status(400).json({
         success: false,
-        message: "Invalid OTP",
+        message: "OTP doesn't match",
       });
     }
 
