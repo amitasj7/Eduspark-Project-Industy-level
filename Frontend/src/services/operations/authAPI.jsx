@@ -155,7 +155,7 @@ export function getPasswordResetToken(email, setEmailSent) {
         email,
       });
 
-      console.log("RESET PASSWORD TOKEN RESPONSE....", response);
+      // console.log("RESET PASSWORD TOKEN RESPONSE....", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -182,7 +182,7 @@ export function resetPassword(password, confirmPassword, token,_id,navigate) {
         _id,
       });
 
-      console.log("RESET Password RESPONSE ... ", response);
+      // console.log("RESET Password RESPONSE ... ", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
