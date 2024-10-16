@@ -28,16 +28,13 @@ app.use(express.json()); // json data parsar
 app.use(cookieParser());
 
 // Frontend se request ko block nahi krega
+// CORS options
 const corsOptions = {
-  origin: [
-    "https://edusparkprojectfrontend.vercel.app/",
-  ],
+  origin: "https://edusparkprojectfrontend.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
-  Credentials: true,
-
+  credentials: true, // Corrected 'Credentials' to 'credentials'
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
-  // other options...
 };
 
 app.use(cors(corsOptions));
