@@ -57,7 +57,8 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach/", contactRoutes);
 
 // default routes
-app.get("/", (req, res) => {
+const default_routes = "https://eduspark-project-industy-level.onrender.com";
+app.get(default_routes, (req, res) => {
   return res.json({
     success: true,
     message: "Your server is up and running...",
