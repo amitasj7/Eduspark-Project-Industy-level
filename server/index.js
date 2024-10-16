@@ -28,14 +28,14 @@ app.use(express.json()); // json data parsar
 app.use(cookieParser());
 
 // Frontend se request ko block nahi krega
+// CORS options
 const corsOptions = {
-  origin:  "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
-  Credentials: true,
+  origin: "http://localhost:3000",
 
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+  credentials: true, // Corrected 'Credentials' to 'credentials'
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
-  // other options...
 };
 
 app.use(cors(corsOptions));
@@ -58,8 +58,10 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach/", contactRoutes);
 
 // default routes
-const default_routes = "/";  // change when deploy
-app.get("/", (req, res) => {
+
+const default_routes = "/"; // change when deploy
+
+app.get(default_routes, (req, res) => {
   return res.json({
     success: true,
     message: "Your server is up and running...",
