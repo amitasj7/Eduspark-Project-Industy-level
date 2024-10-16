@@ -30,7 +30,7 @@ app.use(cookieParser());
 // Frontend se request ko block nahi krega
 // CORS options
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://edusparkprojectfrontend.vercel.app",
 
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
   credentials: true, // Corrected 'Credentials' to 'credentials'
@@ -59,7 +59,7 @@ app.use("/api/v1/reach/", contactRoutes);
 
 // default routes
 
-const default_routes = "/"; // change when deploy
+const default_routes = "https://eduspark-project-industy-level.onrender.com/"; // change when deploy
 
 app.get(default_routes, (req, res) => {
   return res.json({
