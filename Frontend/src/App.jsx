@@ -67,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/update-password/:id"
+          path="/update-password/:_id/:token"
           element={
             <OpenRoute>
               <UpdatePassword />

@@ -38,7 +38,9 @@ exports.resetPasswordToken = async (req, res) => {
 
     // create url
 
-    const url = `http://localhost:3000/update-password?_id=${user._id}&token=${token}`;
+    const base_url = process.env.BASE_URL || "http://localhost:3000"; // This will dynamically take the base URL
+    console.log("base url is : ", base_url);
+    const url = `${base_url}/update-password/${user._id}/${token}`;
 
     // send mail containing the url
 
@@ -67,16 +69,14 @@ exports.resetPasswordToken = async (req, res) => {
 exports.resetPassword = async (req, res) => {
   try {
     // data fetch
-    const { password, confirmPassword } = req.body;
-  
-    const { _id, token } = req.query;
+    const { password, confirmPassword, token, _id } = req.body;
 
-    // console.log({
-    //   "password": password,
-    //   "confirm pass": confirmPassword,
-    //   "_id": _id,
-    //   "token": token,
-    // });
+    console.log({
+      password: password,
+      "confirm pass": confirmPassword,
+      _id: _id,
+      token: token,
+    });
 
     // console.log("***user***", req.user);
     // const userid = req.user.id;
