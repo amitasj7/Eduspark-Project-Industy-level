@@ -1,4 +1,4 @@
-const BASE_URL = "https://eduspark-project-industy-level.onrender.com"
+const BASE_URL = "https://eduspark-project-industy-level.onrender.com/api/v1"
 
 // AUTH ENDPOINTS
 export const endpoints = {
