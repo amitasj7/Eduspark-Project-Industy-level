@@ -2,11 +2,9 @@
 <img src='https://github.com/Aniruddha-Gade/Study-Notion-EdTech__MERN-Stack/blob/main/frontend/src/assets/Logo/Logo-Full-Light.png' />
 
 # Project Description 📝
-StudyNotion is a fully functional ed-tech platform that enables users to create, consume, and rate educational content. <br/>
+Eduspark is a fully functional ed-tech platform that enables users to create, consume, and rate educational content. <br/>
 The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
 
-
-<h2>Explanation Video 📺 - [ https://www.youtube.com/watch?v=UP-kqPs4dJ8 ]</h2>
 <hr/>
 
 <h2>Live link 🌍📡 - [ https://eduspark-project-industy-level.vercel.app/  ]</h2>
@@ -22,7 +20,7 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 
 | Section                 | Description                                  |
 |-------------------------|----------------------------------------------|
-| [StudyNotion Aim](#studynotion-aim-)        | 📚 Overview of StudyNotion's goals            |
+| [Eduspark Aim](#studynotion-aim-)        | 📚 Overview of Eduspark's goals            |
 | [Tech Stack](#tech-stack-)             | 💻🔧 Technologies used in the project         |
 | [System Architecture](#system-architecture-)    | 🏰 Overview of the system architecture      |
 | [Architecture Diagram](#architecture-diagram-)   | 🏗️ Diagram illustrating the architecture   |
@@ -74,7 +72,7 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 
 ## System Architecture 🏰
 <br/>
-☝ The StudyNotion ed-tech platform consists of three main components:  <br/>
+☝ The Eduspark ed-tech platform consists of three main components:  <br/>
 The front end, the back end, and the database. The platform follows a client-server architecture, with the front end serving as the client and the back end and database serving as the server.
 
 🎨 Front-end  <br/>
