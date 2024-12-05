@@ -9,7 +9,7 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 <h2>Explanation Video 📺 - [ https://www.youtube.com/watch?v=UP-kqPs4dJ8 ]</h2>
 <hr/>
 
-<h2>Live link 🌍📡 - [  https://study-notion-full-stack.vercel.app/  ]</h2>
+<h2>Live link 🌍📡 - [ https://eduspark-project-industy-level.vercel.app/  ]</h2>
 <hr/>
 
 
@@ -36,7 +36,7 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 
 
 
-## StudyNotion Aim 📚 
+## Eduspark Aim 📚 
 <br/>
 1️⃣ A seamless and interactive learning experience for students, making education more accessible and engaging.<br/>
 2️⃣ A platform for instructors to showcase their expertise and connect with learners across the globe.<br/>
